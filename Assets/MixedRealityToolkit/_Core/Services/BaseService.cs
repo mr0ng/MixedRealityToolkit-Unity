@@ -1,13 +1,17 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
+
 namespace Microsoft.MixedReality.Toolkit.Core.Services
 {
     /// <summary>
     /// The base service implements <see cref="Interfaces.IMixedRealityService"/> and provides default properties for all services.
     /// </summary>
-    public class BaseService : Interfaces.IMixedRealityService
+    public abstract class BaseService : Interfaces.IMixedRealityService
     {
+        #region IMixedRealityService Implementation
+
         /// <inheritdoc />
         public virtual string Name { get; protected set; }
 
@@ -31,5 +35,28 @@ namespace Microsoft.MixedReality.Toolkit.Core.Services
 
         /// <inheritdoc />
         public virtual void Destroy() { }
+
+        #endregion IMixedRealityService Implementation
+
+        #region IDisposable Implementation
+
+        private bool disposed;
+
+        ~BaseService()
+        {
+            OnDispose(true);
+        }
+
+        public void Dispose()
+        {
+            if (disposed) { return; }
+            disposed = true;
+            GC.SuppressFinalize(this);
+            OnDispose(false);
+        }
+
+        protected virtual void OnDispose(bool finalizing) { }
+
+        #endregion IDisposable Implementation
     }
 }

@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Microsoft.MixedReality.Toolkit.Core.Inspectors.Profiles
 {
     [CustomEditor(typeof(MixedRealityToolkitConfigurationProfile))]
-    public class MixedRealityToolkitConfigurationProfileInspector : MixedRealityBaseConfigurationProfileInspector
+    public class MixedRealityToolkitConfigurationProfileInspector : BaseMixedRealityToolkitConfigurationProfileInspector
     {
         private static readonly GUIContent TargetScaleContent = new GUIContent("Target Scale:");
 
@@ -250,7 +250,7 @@ namespace Microsoft.MixedReality.Toolkit.Core.Inspectors.Profiles
 
             if (!changed)
             {
-                changed = EditorGUI.EndChangeCheck();
+                changed |= EditorGUI.EndChangeCheck();
             }
 
             EditorGUIUtility.labelWidth = previousLabelWidth;
