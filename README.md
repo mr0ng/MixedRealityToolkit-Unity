@@ -1,5 +1,7 @@
 ![Mixed Reality Toolkit](Documentation/Images/Logo_MRTK_Unity_Banner.png)
 
+Test
+
 # What is the Mixed Reality Toolkit
 
 MRTK-Unity is a Microsoft-driven project that provides a set of components and features, used to accelerate cross-platform MR app development in Unity. Here are some of its functions:
